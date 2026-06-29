@@ -1,0 +1,135 @@
+/* ============================================================
+   responsive.css — Tablet & Mobile Breakpoints
+   ============================================================ */
+
+/* ── Tablet (≤ 1024px) ── */
+@media (max-width: 1024px) {
+  :root { --space-3xl: 6rem; }
+
+  .hero-content { grid-template-columns: 1fr; text-align: center; gap: var(--space-xl); }
+  .hero-left { align-items: center; }
+  .hero-bio { margin: 0 auto; }
+  .hero-right { order: -1; }
+  .hero-avatar-wrap { width: 300px; height: 300px; }
+  .hero-stats { display: none; }
+  .orbit-dot-1 { animation: orbit1-sm 6s linear infinite; }
+  .orbit-dot-2 { animation: orbit2-sm 9s linear infinite; }
+  .orbit-dot-3 { animation: orbit3-sm 12s linear infinite; }
+
+  .about-grid { grid-template-columns: 1fr; gap: var(--space-xl); }
+  .about-stats { grid-template-columns: repeat(4, 1fr); }
+
+  .projects-grid { grid-template-columns: 1fr; }
+
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .certs-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .contact-grid { grid-template-columns: 1fr; }
+
+  .footer-top { flex-direction: column; gap: var(--space-lg); }
+  .footer-links { gap: var(--space-lg); }
+
+  @keyframes orbit1-sm {
+    from { transform: rotate(0deg) translateX(170px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(170px) rotate(-360deg); }
+  }
+  @keyframes orbit2-sm {
+    from { transform: rotate(90deg) translateX(200px) rotate(-90deg); }
+    to   { transform: rotate(450deg) translateX(200px) rotate(-450deg); }
+  }
+  @keyframes orbit3-sm {
+    from { transform: rotate(200deg) translateX(240px) rotate(-200deg); }
+    to   { transform: rotate(560deg) translateX(240px) rotate(-560deg); }
+  }
+}
+
+/* ── Mobile (≤ 768px) ── */
+@media (max-width: 768px) {
+  :root {
+    --space-3xl: 4rem;
+    --space-2xl: 3rem;
+    --space-xl: 2rem;
+    --nav-height: 60px;
+  }
+
+  body { cursor: auto; }
+  #cursor-outer, #cursor-inner, #cursor-glow { display: none; }
+
+  /* Nav */
+  .nav-links {
+    position: fixed;
+    top: 0; right: -100%;
+    width: min(320px, 80vw);
+    height: 100vh;
+    background: rgba(7,11,20,0.97);
+    backdrop-filter: blur(24px);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: var(--space-xl);
+    gap: var(--space-md);
+    transition: right var(--transition-base);
+    border-left: 1px solid var(--glass-border);
+    z-index: 1001;
+  }
+  .nav-links.open { right: 0; }
+  .nav-link { font-size: 1.25rem; }
+  .hamburger { display: flex; }
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+  .nav-cta { display: none; }
+
+  /* Hero */
+  .hero-avatar-wrap { width: 240px; height: 240px; }
+  .tech-badge { display: none; }
+  .hero-name { font-size: clamp(2.25rem, 10vw, 3.5rem); }
+  .hero-actions { justify-content: center; }
+  .hero-socials { justify-content: center; }
+  .hero-scroll { display: none; }
+
+  /* About */
+  .about-stats { grid-template-columns: repeat(2, 1fr); }
+  .stat-number { font-size: 2.25rem; }
+
+  /* Skills */
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Projects */
+  .project-links { flex-wrap: wrap; }
+
+  /* Services */
+  .services-grid { grid-template-columns: 1fr; }
+
+  /* Certs */
+  .certs-grid { grid-template-columns: 1fr; }
+
+  /* Contact */
+  .form-row { grid-template-columns: 1fr; }
+
+  /* Footer */
+  .footer-bottom { flex-direction: column; text-align: center; gap: var(--space-sm); }
+  .footer-links { flex-direction: column; gap: var(--space-md); }
+}
+
+/* ── Small Mobile (≤ 480px) ── */
+@media (max-width: 480px) {
+  .container { padding: 0 var(--space-sm); }
+  .hero-content { padding: 0 var(--space-sm); }
+  .hero-badge { font-size: 0.6875rem; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  .about-stats { grid-template-columns: 1fr 1fr; }
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .timeline { padding-left: 1.25rem; }
+  .timeline-item { padding-left: var(--space-md); }
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
